@@ -13,7 +13,12 @@
         require_once 'connection.php';   
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     echo "Login: " . $_SESSION['username']. "<a href='loginchange.php'> Изменить</a><br><br>";
+    $link = mysqli_connect($host,$user,$password,$database)
+        or die("Error with connection to DB".mysqli_error($link));
+    $mail = "SELECT mail from users WHERE username = '{$_SESSION['username']}'";
+    $result = mysqli_query($link,$mail);
     echo "<a href='changepassword.php'>Change password</a><br><br>";
+    echo "<a href='emailchange.php'>Изменить e-mail</a><br><br>";
 } else {
     echo "Please log in first to see this page.";
 }
