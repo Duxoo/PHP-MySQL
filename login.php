@@ -27,7 +27,7 @@
                     $row = mysqli_fetch_row($checkdata);
                     //перебор по ячейкам текущей строки
                     for($j = 0; $j < 2; $j++) {
-                        if($row[$j] == $login && $row[$j + 1] == $password) {
+                        if($row[$j] == $login && password_verify($password , $row[$j + 1])) {
                                 $bool = false;
                                 $_SESSION['loggedin'] = true;
                                 $_SESSION['username'] = $login;

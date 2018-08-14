@@ -12,9 +12,11 @@
         $email = $_POST['e-mailreg'];
         //проверка на то,что поля ввода не пустые
         if($login != '' && $password != '' && $email!= ''){
+        //хэширование пароля
+        $hash = password_hash($password, PASSWORD_DEFAULT);
         //SQL команды
         $select = "SELECT username from users";
-        $query = "INSERT INTO users values(NULL,'$login','$password','$email')"
+        $query = "INSERT INTO users values(NULL,'$login','$hash','$email')"
         or die("Registration error!".mysqli_error($link));
         $selectmail = "SELECT mail from users";
         $checkmail = mysqli_query($link,$selectmail);

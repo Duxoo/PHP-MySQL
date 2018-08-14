@@ -25,6 +25,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     ?>
     <form method="POST">
     <button name="delete">Delete your account</button>
+    <br>
+    <button>Выйти из аккаунта</button>
 </form>
     <?php
     if(isset($_POST['delete'])) {
